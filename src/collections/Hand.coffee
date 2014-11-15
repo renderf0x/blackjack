@@ -22,7 +22,15 @@ class window.Hand extends Backbone.Collection
   , 0
 
   maxScore: ->
-    Math.max @scores()[0], @scores()[1]
+    # if scores != to each other. return the largest score that is 21 or under
+    if @scores()[0] != @scores()[1] and @scores()[1] <= 21
+      @scores()[1]
+    else
+      @scores()[0]
+
+    # else return score[0]
+    ##old logic
+    #Math.max @scores()[0], @scores()[1]
 
   scores: ->
     # The scores are an array of potential scores.

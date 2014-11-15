@@ -25,7 +25,6 @@ class window.App extends Backbone.Model
 
   handleDealerStand: ->
     # Choose a winner
-    console.log "Dealer Standing!"
     if @get('dealerHand').maxScore() > @get('playerHand').maxScore()
       @endGame("dealer")
     else if @get('dealerHand').maxScore() < @get('playerHand').maxScore()
@@ -44,16 +43,12 @@ class window.App extends Backbone.Model
 
     if winner is "dealer"
       @get('scoreBoard').dealerIncr()
-      console.log "dealer win (endGame)" #@trigger('lose', @)
     if winner is "player"
       @get('scoreBoard').playerIncr()
-      console.log "player win (endGame)" #@trigger('won', @)
     if winner is "push"
-      console.log "push it real good"
+      @get('scoreBoard').pushGame()
 
   resetGame: =>
-    #TODO: make game reset REALLY work
-    # @initialize()
 
     @set 'playerHand', @get('deck').dealPlayer()
     @set 'dealerHand', @get('deck').dealDealer()
