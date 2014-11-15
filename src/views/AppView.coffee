@@ -17,6 +17,9 @@ class window.AppView extends Backbone.View
         <div class="col-md-6">
           <div class="dealer-hand-container"></div>
         </div>
+        <div class="resetSection col-md-4">
+          <button class="btn btn-lg btn-default play-again-button disabled">Play Again!</button>
+        </div>
       </div>
     </div>
   '
@@ -24,11 +27,20 @@ class window.AppView extends Backbone.View
   events:
     'click .hit-button': -> @model.get('playerHand').hit()
     'click .stand-button': -> @model.get('playerHand').stand()
+    'click .play-again-button': -> @model.resetGame()
 
   initialize: ->
     @render()
     @model.on "resetGame", =>
       @render()
+    @model.on "endGame", =>
+      @disableGameButtons()
+
+  disableGameButtons: ->
+    #stuff
+    $('.hit-button').toggleClass "disabled"
+    $('.stand-button').toggleClass "disabled"
+    $('.play-again-button').toggleClass "disabled" #this starts disabled on every render
 
   render: ->
     @$el.children().detach()
