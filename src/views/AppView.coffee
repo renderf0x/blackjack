@@ -11,6 +11,8 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
+    @model.on "resetGame", =>
+      @render()
 
   render: ->
     @$el.children().detach()
