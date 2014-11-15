@@ -10,7 +10,7 @@ class window.ScoreView extends Backbone.View
   initialize: ->
     @render()
     @model.on "change", =>
-      render()
+      @render()
 
   render: ->
     #no detach here due to no listeners on scoreboard

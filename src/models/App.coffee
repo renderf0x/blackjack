@@ -39,11 +39,21 @@ class window.App extends Backbone.Model
     if @get('dealerHand').scores()[0] < 22 and @get('dealerHand').scores()[1] then @get('dealerHand').stand()
 
   endGame: (winner) ->
-    if winner is "dealer" then alert "dealer win (endGame)" #@trigger('lose', @)
-    if winner is "player" then alert "player win (endGame)" #@trigger('won', @)
+    if winner is "dealer"
+      @get('scoreBoard').dealerIncr()
+      alert "dealer win (endGame)" #@trigger('lose', @)
+    if winner is "player"
+      @get('scoreBoard').playerIncr()
+      alert "player win (endGame)" #@trigger('won', @)
     if winner is "push" then alert "push it real good"
     @resetGame()
 
   resetGame: =>
-    @initialize()
+    #TODO: make game reset REALLY work
+    #@initialize()
+    # @set 'playerHand', null
+    # @set 'dealerHand', null
+    @set 'playerHand', @get('deck').dealPlayer()
+    #alert @get 'playerHand' .length
+    @set 'dealerHand', @get('deck').dealDealer()
     @trigger "resetGame", @
