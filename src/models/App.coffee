@@ -5,6 +5,7 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
+    @set 'scoreBoard', new Score()
 
     @get('playerHand').on 'bust', => @handlePlayerBust()
     @get('playerHand').on 'stand', => @handlePlayerStand()

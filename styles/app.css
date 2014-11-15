@@ -1,10 +1,12 @@
 .card {
   float: left;
   border: solid 1px black;
-  width: 100px;
+  width: 125px;
   border-radius: 5px;
-  height: 140px;
+  height: 170px;
   margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .covered {
@@ -12,5 +14,20 @@
 }
 
 .hand {
-  overflow: auto;
+  color: white;
+  /*overflow: auto;*/
+}
+
+.windoze {
+  width: 100px;
+  height: auto;
+}
+
+body {
+  padding: 30px;
+  background-image: url('../img/fakeGrass.jpg');
+}
+
+.score-container {
+  color: white;
 }
